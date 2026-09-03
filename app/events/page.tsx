@@ -23,7 +23,7 @@ export default function EventsPage() {
     <main>
       <PageIntro
         eyebrow="Events"
-        title="Where practice becomes performance."
+        title="Where human talent is celebrated, voices are given room, and ideas are allowed to truly shine."
         text="Live experiences for people who want to learn, practise and connect through powerful communication."
       />
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">

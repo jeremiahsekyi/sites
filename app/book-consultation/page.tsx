@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-import { ConsultationForm } from "@/components/consultation-form";
-import { PageIntro } from "@/components/page-intro";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Book a Consultation", description: "Start a conversation about communication coaching or team training." };
-export default function BookPage(){return <main><PageIntro eyebrow="Book a consultation" title="Start with the communication challenge that matters now." text="Tell us what you are preparing for, where you feel stuck and what a strong result would look like. We will recommend the most useful next step."/><section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.75fr_1.25fr] lg:px-8"><div><h2 className="display text-4xl">What happens next</h2><ol className="mt-8 grid gap-6">{[["01","Share your goal","Give us enough context to understand the moment and the stakes."],["02","Get a recommendation","We will suggest the most suitable coaching or training format."],["03","Agree the plan","You receive a clear scope, schedule and quotation before making a commitment."]].map(([n,t,x])=><li key={n} className="grid grid-cols-[44px_1fr] gap-3"><span className="font-black text-[#d94b35]">{n}</span><div><strong className="text-lg">{t}</strong><p className="mt-2 leading-7 text-[#626772]">{x}</p></div></li>)}</ol><div className="mt-10 border-t border-[#d9d5ca] pt-6 text-sm leading-7 text-[#626772]"><p>Prefer a direct message?</p><a className="font-bold text-[#10233f]" href="https://wa.me/233201393568">WhatsApp +233 20 139 3568</a></div></div><ConsultationForm/></section></main>}
+export default function LegacyBookPage() {
+  redirect("/book");
+}

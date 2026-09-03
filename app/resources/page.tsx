@@ -62,7 +62,7 @@ export default function ResourcesPage() {
             Tell us what you are working on and we will point you to the most relevant existing resource or programme.
           </p>
           <Link
-            href="mailto:management@thespeechfactory.org?subject=Speech%20Factory%20resource%20request"
+            href="mailto:jeremiah@thespeechfactory.org?subject=Speech%20Factory%20resource%20request"
             className="mt-7 inline-block bg-[#ffcf24] px-6 py-4 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white"
           >
             Request a resource
