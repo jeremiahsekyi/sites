@@ -36,19 +36,19 @@ export default function ResourcesPage() {
       </section>
       <section className="bg-[#e9e6dc]">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-          <div>
+          <div data-reveal="left">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Listen and learn</p>
             <h2 className="display mt-5 text-5xl leading-none">Communication ideas, unpacked in conversation.</h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-[#626772]">
               Our evolving media library will bring practical lessons, interviews and thoughtful conversations together in one place.
             </p>
           </div>
-          <div className="group relative aspect-[4/3] overflow-hidden">
+          <div className="group relative aspect-[4/3] overflow-hidden" data-reveal="right">
             <Image
               src="/images/podcast.webp"
               alt="Jeremiah Kobby Sekyi recording a communication lesson"
               fill
-              className="object-cover transition duration-700 group-hover:scale-[1.03]"
+              className="object-cover object-[50%_38%] transition duration-1000 group-hover:scale-[1.04]"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           </div>
@@ -62,7 +62,7 @@ export default function ResourcesPage() {
             Tell us what you are working on and we will point you to the most relevant existing resource or programme.
           </p>
           <Link
-            href="mailto:jeremiah@thespeechfactory.org?subject=Speech%20Factory%20resource%20request"
+            href="mailto:management@thespeechfactory.org?subject=Speech%20Factory%20resource%20request"
             className="mt-7 inline-block bg-[#ffcf24] px-6 py-4 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white"
           >
             Request a resource

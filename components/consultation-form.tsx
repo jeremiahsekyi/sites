@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-const contactEmail = "jeremiah@thespeechfactory.org";
+const contactEmail = "management@thespeechfactory.org";
 
 export function ConsultationForm() {
   const [sent, setSent] = useState(false);

@@ -9,5 +9,3 @@ export const testimonials = [
   { quote: "I expected a list of do’s and don’ts, but I got a rigorous deep dive into self-awareness. This course taught me that knowing yourself is the only way to build true confidence.", name: "Michelle De-Veer", role: "Legal Practitioner", image: "/images/michelle-de-veer.webp" },
   { quote: "You shifted all our universes with your guidance today. Spectacular.", name: "Olivia J.", role: "Seismic team workshop participant", image: null },
 ] as const;
-
-export const clientNames = ["Microsoft", "PwC", "Deloitte", "HSBC", "NEOM", "Seismic"];
