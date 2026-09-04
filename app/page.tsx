@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { ClientBrandStrip } from "@/components/client-brand-strip";
+import { CoachPhotoCarousel } from "@/components/coach-photo-carousel";
 import { ProgrammeCard } from "@/components/programme-card";
 import { programmes, testimonials } from "@/lib/content";
 
@@ -89,9 +90,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
-        <div className="group relative aspect-[3/2] overflow-hidden">
-          <Image src="/images/coach-stage.jpeg" alt="Jeremiah Kobby Sekyi speaking at an international conference" fill className="object-cover object-center transition duration-700 group-hover:scale-[1.025]" sizes="(max-width: 1024px) 100vw, 50vw" />
-        </div>
+        <CoachPhotoCarousel />
         <div className="lg:pl-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Meet the founder</p>
           <h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Coached by someone who knows the stage.</h2>
