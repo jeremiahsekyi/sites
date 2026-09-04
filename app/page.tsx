@@ -7,14 +7,146 @@ import { ProgrammeCard } from "@/components/programme-card";
 import { programmes, testimonials } from "@/lib/content";
 
 export default function Home() {
-  return <main>
-    <section className="relative overflow-hidden bg-[#10233f] text-white"><div className="grain absolute inset-0 opacity-40"/><div className="hero-glow absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#d94b35]/20 blur-3xl"/><div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20"><div className="py-6" data-reveal="left"><p className="text-xs font-black uppercase tracking-[0.22em] text-[#ffcf24]">Building human communicators AI couldn’t dream of replacing</p><h1 className="display mt-6 max-w-3xl text-6xl leading-[0.92] sm:text-7xl lg:text-[5.5rem]">Speak with clarity. Lead with influence.</h1><p className="mt-7 max-w-xl text-lg leading-8 text-white/75">Research-backed coaching for professionals, executives and teams who need their ideas to be understood, trusted and acted on.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/book" className="inline-flex min-h-14 items-center justify-center gap-3 bg-[#ffcf24] px-6 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white hover:shadow-xl">Book an appointment <ArrowRight size={19}/></Link><Link href="/programmes" className="inline-flex min-h-14 items-center justify-center border border-white/40 px-6 font-bold hover:-translate-y-1 hover:border-white hover:bg-white/10">Explore programmes</Link></div></div><div className="hero-media group relative min-h-[420px] overflow-hidden lg:min-h-[590px]" data-reveal="right"><div className="absolute inset-0 translate-x-4 translate-y-4 border-2 border-[#ffcf24]"/><Image src="/images/hero.webp" alt="Jeremiah Sekyi coaching a live communication workshop" fill priority className="hero-image object-cover object-[52%_48%] transition duration-1000 group-hover:scale-[1.035]" sizes="(max-width: 1024px) 100vw, 50vw"/><div className="proof-badge absolute bottom-0 left-0 max-w-xs bg-[#d94b35] p-5 text-white"><strong className="relative z-10 block text-3xl"><AnimatedCounter /></strong><span className="relative z-10 text-sm leading-6">students and professionals trained across every continent</span></div></div></div></section>
-    <ClientBrandStrip />
-    <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"><div data-reveal="left"><p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Why communication now</p><h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Your expertise only travels as far as you can communicate it.</h2></div><div className="grid gap-8 sm:grid-cols-2">{[[Brain,"Think clearly","Organise complex ideas into messages people can follow."],[MessageSquareText,"Articulate value","Explain your work, decisions and vision with precision."],[Mic2,"Deliver with presence","Build the confidence and technique to hold the room."],[Award,"Create real-world impact","Apply your skills to the moments that shape careers and organisations."]].map(([Icon,title,text])=>{const C=Icon as typeof Brain;return <article key={String(title)} className="border-t-2 border-[#10233f] pt-5" data-reveal="scale"><C className="text-[#d94b35]"/><h3 className="mt-5 text-xl font-extrabold">{String(title)}</h3><p className="mt-3 leading-7 text-[#626772]">{String(text)}</p></article>})}</div></div></section>
-    <section className="bg-[#e9e6dc]"><div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div><p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Programmes</p><h2 className="display mt-4 text-5xl sm:text-6xl">Built around the way you lead.</h2></div><Link href="/programmes" className="inline-flex items-center gap-2 font-extrabold text-[#10233f]">Compare all programmes <ArrowRight size={18}/></Link></div><div className="mt-12 grid gap-6 lg:grid-cols-3">{programmes.map(programme=><ProgrammeCard key={programme.slug} programme={programme}/>)}</div></div></section>
-    <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:px-8 lg:py-28"><div><p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">What changes</p><h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Confidence becomes visible in the work.</h2><p className="mt-6 max-w-md text-lg leading-8 text-[#626772]">Clients leave with practical systems for clearer thinking, stronger delivery and better performance in high-pressure communication.</p><Link href="/results" className="mt-7 inline-flex items-center gap-2 font-extrabold text-[#10233f]">See client results <ArrowRight size={18}/></Link></div><div className="grid gap-5">{testimonials.slice(0,2).map(testimonial=><blockquote key={testimonial.name} className="grid gap-5 border border-[#d9d5ca] bg-white p-7 sm:grid-cols-[90px_1fr] sm:p-8"><div className="relative h-[90px] w-[90px] overflow-hidden rounded-full"><Image src={testimonial.image!} alt={testimonial.name} fill className="object-cover" sizes="90px"/></div><div><p className="display text-2xl leading-9">“{testimonial.quote}”</p><footer className="mt-5 text-sm"><strong>{testimonial.name}</strong><span className="block text-[#6b7079]">{testimonial.role}</span></footer></div></blockquote>)}</div></section>
-    <section className="bg-[#d94b35] text-white"><div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 lg:grid-cols-[1fr_0.8fr] lg:px-8 lg:py-20"><div><p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">The Speech Festival</p><h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Practice deserves a stage.</h2><p className="mt-6 max-w-xl text-lg leading-8 text-white/80">Our annual live event brings participants, alumni, coaches and partners together to celebrate growth through speeches, conversations and connection.</p><Link href="/events" className="mt-8 inline-flex min-h-13 items-center gap-3 bg-white px-6 font-black text-[#10233f] hover:-translate-y-1">Explore events <ArrowRight size={18}/></Link></div><div className="group relative aspect-[4/3] overflow-hidden"><Image src="/images/workshop-speaker.webp" alt="A participant speaking during a Speech Factory session" fill className="object-cover transition duration-700 group-hover:scale-[1.03]" sizes="(max-width: 1024px) 100vw, 42vw"/></div></div></section>
-    <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28"><div className="relative aspect-[4/5] max-h-[690px]"><Image src="/images/jeremiah-sekyi.webp" alt="Jeremiah Kobby Sekyi, founder of The Speech Factory" fill className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 50vw"/></div><div className="lg:pl-10"><p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Meet the founder</p><h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Coached by someone who knows the stage.</h2><p className="mt-7 text-lg leading-8 text-[#626772]">Jeremiah Kobby Sekyi is an award-winning speaker and communication coach with more than a decade of experience. In 2019, he became the first African to win the World Universities Debating Championship public speaking title.</p><p className="mt-4 text-lg leading-8 text-[#626772]">He has since trained professionals, executives and young speakers across Ghana, China and international organisations, combining world-class speaking experience with an empathetic, evidence-led coaching approach.</p><Link href="/about" className="mt-8 inline-flex items-center gap-2 font-extrabold text-[#10233f]">Read our story <ArrowRight size={18}/></Link></div></section>
-    <section className="bg-[#10233f] text-white"><div className="grain mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 py-20 md:flex-row md:items-end md:justify-between lg:px-8"><div><p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">Your next speech could be spectacular.</p><h2 className="display mt-5 max-w-3xl text-5xl leading-none sm:text-6xl">Let’s make your voice work harder for you.</h2></div><Link href="/book" className="inline-flex min-h-14 shrink-0 items-center gap-3 bg-[#ffcf24] px-6 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white hover:shadow-xl">Book an appointment <ArrowRight size={19}/></Link></div></section>
-  </main>;
+  return (
+    <main>
+      <section className="relative overflow-hidden bg-[#10233f] text-white">
+        <div className="grain absolute inset-0 opacity-40" />
+        <div className="hero-glow absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#d94b35]/20 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
+          <div className="py-6" data-reveal="left">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#ffcf24]">
+              Empowering human communicators for a tech future
+            </p>
+            <h1 className="display mt-6 max-w-3xl text-6xl leading-[0.92] sm:text-7xl lg:text-[5.5rem]">
+              Speak with clarity. Lead with influence.
+            </h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-white/75">
+              Research-backed coaching for professionals, executives and teams who need their ideas to be understood, trusted and acted on.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/book" className="inline-flex min-h-14 items-center justify-center gap-3 bg-[#ffcf24] px-6 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white hover:shadow-xl">
+                Book an appointment <ArrowRight size={19} />
+              </Link>
+              <Link href="/programmes" className="inline-flex min-h-14 items-center justify-center border border-white/40 px-6 font-bold hover:-translate-y-1 hover:border-white hover:bg-white/10">
+                Explore programmes
+              </Link>
+            </div>
+          </div>
+          <div className="hero-media group relative min-h-[420px] overflow-hidden lg:min-h-[590px]" data-reveal="right">
+            <div className="absolute inset-0 translate-x-4 translate-y-4 border-2 border-[#ffcf24]" />
+            <Image src="/images/hero.webp" alt="Jeremiah Sekyi coaching a live communication workshop" fill priority className="hero-image object-cover object-[52%_48%] transition duration-1000 group-hover:scale-[1.035]" sizes="(max-width: 1024px) 100vw, 50vw" />
+            <div className="proof-badge absolute bottom-0 left-0 max-w-xs bg-[#d94b35] p-5 text-white">
+              <strong className="relative z-10 block text-3xl"><AnimatedCounter /></strong>
+              <span className="relative z-10 text-sm leading-6">students and professionals trained across every continent</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ClientBrandStrip />
+
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div data-reveal="left">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Why communication now</p>
+            <h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Your expertise only travels as far as you can communicate it.</h2>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2">
+            {[
+              [Brain, "Think clearly", "Organise complex ideas into messages people can follow."],
+              [MessageSquareText, "Articulate value", "Explain your work, decisions and vision with precision."],
+              [Mic2, "Deliver with presence", "Build the confidence and technique to hold the room."],
+              [Award, "Create real-world impact", "Apply your skills to the moments that shape careers and organisations."],
+            ].map(([Icon, title, text]) => {
+              const C = Icon as typeof Brain;
+              return (
+                <article key={String(title)} className="border-t-2 border-[#10233f] pt-5" data-reveal="scale">
+                  <C className="text-[#d94b35]" />
+                  <h3 className="mt-5 text-xl font-extrabold">{String(title)}</h3>
+                  <p className="mt-3 leading-7 text-[#626772]">{String(text)}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#e9e6dc]">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Programmes</p>
+              <h2 className="display mt-4 text-5xl sm:text-6xl">Built to suit your communication needs.</h2>
+            </div>
+            <Link href="/programmes" className="inline-flex items-center gap-2 font-extrabold text-[#10233f]">
+              Compare all programmes <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {programmes.map((programme) => <ProgrammeCard key={programme.slug} programme={programme} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div className="relative aspect-[4/5] max-h-[690px]">
+          <Image src="/images/jeremiah-sekyi.webp" alt="Jeremiah Kobby Sekyi, founder of The Speech Factory" fill className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 50vw" />
+        </div>
+        <div className="lg:pl-10">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Meet the founder</p>
+          <h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Coached by someone who knows the stage.</h2>
+          <p className="mt-7 text-lg leading-8 text-[#626772]">
+            Jeremiah Kobby Sekyi is an award-winning speaker and communication coach with more than a decade of experience. In 2019, he became the first African to win the World Universities Debating Championship public speaking title.
+          </p>
+          <p className="mt-4 text-lg leading-8 text-[#626772]">
+            He has since trained professionals, executives and young speakers across Ghana, China and international organisations, combining world-class speaking experience with an empathetic, evidence-led coaching approach.
+          </p>
+          <Link href="/about" className="mt-8 inline-flex items-center gap-2 font-extrabold text-[#10233f]">
+            Read our story <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:px-8 lg:py-28">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">What changes</p>
+          <h2 className="display mt-5 text-5xl leading-none sm:text-6xl">Visible confidence, coherence and clarity from session one.</h2>
+          <p className="mt-6 max-w-md text-lg leading-8 text-[#626772]">
+            Our clients receive practical guidance for clearer thinking, stronger delivery and better performance in high-pressure communication.
+          </p>
+          <Link href="/results" className="mt-7 inline-flex items-center gap-2 font-extrabold text-[#10233f]">
+            See client results <ArrowRight size={18} />
+          </Link>
+        </div>
+        <div className="grid gap-5">
+          {testimonials.slice(0, 2).map((testimonial) => (
+            <blockquote key={testimonial.name} className="grid gap-5 border border-[#d9d5ca] bg-white p-7 sm:grid-cols-[90px_1fr] sm:p-8">
+              <div className="relative h-[90px] w-[90px] overflow-hidden rounded-full">
+                <Image src={testimonial.image!} alt={testimonial.name} fill className="object-cover" sizes="90px" />
+              </div>
+              <div>
+                <p className="display text-2xl leading-9">“{testimonial.quote}”</p>
+                <footer className="mt-5 text-sm">
+                  <strong>{testimonial.name}</strong>
+                  <span className="block text-[#6b7079]">{testimonial.role}</span>
+                </footer>
+              </div>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#10233f] text-white">
+        <div className="grain mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 py-20 md:flex-row md:items-end md:justify-between lg:px-8">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">Your next speech could be spectacular.</p>
+            <h2 className="display mt-5 max-w-3xl text-5xl leading-none sm:text-6xl">Let’s make your voice work harder for you.</h2>
+          </div>
+          <Link href="/book" className="inline-flex min-h-14 shrink-0 items-center gap-3 bg-[#ffcf24] px-6 font-black text-[#10233f] hover:-translate-y-1 hover:bg-white hover:shadow-xl">
+            Book an appointment <ArrowRight size={19} />
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
 }
