@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FileText, Lightbulb, Video } from "lucide-react";
+import { DailyPromptGenerator } from "@/components/daily-prompt-generator";
 import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
@@ -13,6 +14,24 @@ const resourceTypes = [
   [FileText, "Guides", "Structured exercises for clearer messages, stronger speeches and better preparation."],
   [Video, "Lessons", "Short teaching sessions that make communication principles easier to apply."],
   [Lightbulb, "Ideas", "Research, commentary and practical analysis on communication, leadership and AI."],
+] as const;
+
+const practiceTestimonials = [
+  {
+    quote: "In the space of one month I did two speaking engagements and felt so confident and captivating on stage. I am incredibly grateful.",
+    name: "Sharon David",
+    country: "United Kingdom",
+  },
+  {
+    quote: "The programme has made me a far more intentional communicator. It hasn’t changed what I want to say; it has changed how effectively I say it.",
+    name: "Aderohunmu Damilola",
+    country: "Nigeria",
+  },
+  {
+    quote: "It has been an enlightening experience. My attention was drawn to specific areas of improvement with each feedback received.",
+    name: "Sandra Ofori Boamah",
+    country: "Ghana",
+  },
 ] as const;
 
 export default function ResourcesPage() {
@@ -32,6 +51,40 @@ export default function ResourcesPage() {
               <p className="mt-4 leading-7 text-[#626772]">{description}</p>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="bg-[#10233f] text-white">
+        <div className="grain mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div data-reveal="left">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">Daily speech practice</p>
+              <h2 className="display mt-5 text-5xl leading-none sm:text-6xl">One prompt. One clear idea. A stronger speaking habit.</h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-white/75">
+                These prompts come from our Daily Speech Practice programme, which runs from June to August. It has welcomed around 100 participants from 11 countries.
+              </p>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-white/55">
+                Ghana, China, the United States, Nigeria, the United Kingdom, Singapore, France, the Netherlands, Portugal, Australia and Cuba.
+              </p>
+              <p className="mt-7 max-w-xl leading-7 text-white/70">
+                Generate a word, proverb or quotation and build a short speech around it. Focus on one message, one strong example and one memorable takeaway.
+              </p>
+            </div>
+            <DailyPromptGenerator />
+          </div>
+          <div className="mt-16 border-t border-white/15 pt-10">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">From the community</p>
+            <div className="mt-7 grid gap-5 lg:grid-cols-3">
+              {practiceTestimonials.map((testimonial) => (
+                <blockquote key={testimonial.name} className="flex h-full flex-col border border-white/15 bg-white/5 p-6" data-reveal="scale">
+                  <p className="display text-2xl leading-9 text-white">“{testimonial.quote}”</p>
+                  <footer className="mt-auto pt-7 text-sm">
+                    <strong>{testimonial.name}</strong>
+                    <span className="block text-white/55">{testimonial.country}</span>
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
       <section className="bg-[#e9e6dc]">

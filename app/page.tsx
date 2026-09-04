@@ -10,27 +10,29 @@ import { programmes, testimonials } from "@/lib/content";
 export default function Home() {
   return (
     <main>
-      <section className="immersive-hero relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-[#07101e] text-white">
-        <div className="immersive-photo immersive-photo-left" aria-hidden="true">
-          <Image src="/images/jeremiah-sekyi.webp" alt="" fill priority className="object-cover object-[50%_25%]" sizes="(max-width: 767px) 0px, 31vw" />
+      <section className="cinematic-hero relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-[#081323] text-white">
+        <div className="cinematic-slides absolute inset-0" aria-hidden="true">
+          <div className="cinematic-slide cinematic-slide-base">
+            <Image src="/images/hero.webp" alt="" fill priority className="object-cover object-[52%_44%]" sizes="100vw" />
+          </div>
+          <div className="cinematic-slide cinematic-slide-team">
+            <Image src="/images/team-culture.webp" alt="" fill priority className="object-cover object-center" sizes="100vw" />
+          </div>
+          <div className="cinematic-slide cinematic-slide-podcast">
+            <Image src="/images/podcast.webp" alt="" fill priority className="object-cover object-[50%_36%]" sizes="100vw" />
+          </div>
         </div>
-        <div className="immersive-photo immersive-photo-centre" aria-hidden="true">
-          <Image src="/images/hero.webp" alt="" fill priority className="object-cover object-[52%_46%]" sizes="(max-width: 767px) 100vw, 50vw" />
-        </div>
-        <div className="immersive-photo immersive-photo-right" aria-hidden="true">
-          <Image src="/images/podcast.webp" alt="" fill priority className="object-cover object-[50%_35%]" sizes="(max-width: 767px) 0px, 29vw" />
-        </div>
-        <div className="immersive-overlay absolute inset-0 z-[1]" aria-hidden="true" />
+        <div className="cinematic-shade absolute inset-0 z-[1]" aria-hidden="true" />
         <div className="grain absolute inset-0 z-[2] opacity-20" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 py-12 sm:py-16 lg:px-8 lg:py-20">
-          <span className="immersive-outline" aria-hidden="true">VOICE</span>
-          <div className="my-auto max-w-5xl py-8" data-reveal="left">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 py-10 sm:py-12 lg:px-8 lg:py-14">
+          <div className="cinematic-copy my-auto max-w-6xl py-10 lg:py-16" data-reveal="left">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#ffcf24]">
               Empowering human communicators for a tech future
             </p>
-            <h1 className="display immersive-heading mt-6 max-w-5xl text-[clamp(3.65rem,8.3vw,7.8rem)] leading-[0.87]">
-              Speak with clarity. Lead with influence.
+            <h1 className="display cinematic-heading mt-6 text-[clamp(3.5rem,7.4vw,7.1rem)] leading-[0.87]">
+              <span className="block">Speak with clarity.</span>
+              <em className="block font-normal text-[#ffcf24]">Lead with influence.</em>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-white/80">
               Research-backed coaching for professionals, executives and teams who need their ideas to be understood, trusted and acted on.
@@ -44,9 +46,17 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="immersive-proof proof-badge ml-auto max-w-sm bg-[#d94b35] p-5 text-white" data-reveal="right">
-            <strong className="relative z-10 block text-4xl"><AnimatedCounter /></strong>
-            <span className="relative z-10 block text-sm leading-6">students and professionals trained across every continent</span>
+
+          <div className="cinematic-bottom flex items-end justify-between gap-10">
+            <div className="cinematic-proof proof-badge bg-[#d94b35] p-5 text-white" data-reveal="left">
+              <strong className="relative z-10 block text-4xl"><AnimatedCounter /></strong>
+              <span className="relative z-10 block text-sm leading-6">students and professionals trained across every continent</span>
+            </div>
+            <div className="cinematic-story-strip" aria-label="Communication coaching outcomes" data-reveal="right">
+              <div className="cinematic-story-card cinematic-story-one"><span>01</span><strong>Build clarity</strong></div>
+              <div className="cinematic-story-card cinematic-story-two"><span>02</span><strong>Practise presence</strong></div>
+              <div className="cinematic-story-card cinematic-story-three"><span>03</span><strong>Lead with influence</strong></div>
+            </div>
           </div>
         </div>
       </section>
@@ -81,17 +91,20 @@ export default function Home() {
 
       <section className="bg-[#e9e6dc]">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Programmes</p>
-              <h2 className="display mt-4 text-5xl sm:text-6xl">Built to suit your communication needs.</h2>
-            </div>
-            <Link href="/programmes" className="inline-flex items-center gap-2 font-extrabold text-[#10233f]">
-              Compare all programmes <ArrowRight size={18} />
-            </Link>
+          <div className="max-w-3xl">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Programmes</p>
+            <h2 className="display mt-4 text-5xl sm:text-6xl">Built to suit your communication needs.</h2>
+            <p className="mt-5 max-w-2xl text-lg italic leading-8 text-[#626772]">
+              Choose the format that matches your goals, pace and context. Every programme is practical, feedback-rich and designed for real communication challenges.
+            </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {programmes.map((programme) => <ProgrammeCard key={programme.slug} programme={programme} />)}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Link href="/programmes" className="inline-flex min-h-13 items-center gap-2 border border-[#10233f] px-6 font-extrabold text-[#10233f] hover:-translate-y-1 hover:bg-[#10233f] hover:text-white hover:shadow-lg">
+              Compare all programmes <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
