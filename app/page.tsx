@@ -89,8 +89,8 @@ export default function Home() {
       </section>
 
       <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
-        <div className="relative aspect-[4/5] max-h-[690px]">
-          <Image src="/images/jeremiah-sekyi.webp" alt="Jeremiah Kobby Sekyi, founder of The Speech Factory" fill className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 50vw" />
+        <div className="group relative aspect-[3/2] overflow-hidden">
+          <Image src="/images/coach-stage.jpeg" alt="Jeremiah Kobby Sekyi speaking at an international conference" fill className="object-cover object-center transition duration-700 group-hover:scale-[1.025]" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
         <div className="lg:pl-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#d94b35]">Meet the founder</p>
