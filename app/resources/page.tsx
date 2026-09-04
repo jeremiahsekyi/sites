@@ -66,7 +66,7 @@ export default function ResourcesPage() {
                 Ghana, China, the United States, Nigeria, the United Kingdom, Singapore, France, the Netherlands, Portugal, Australia and Cuba.
               </p>
               <p className="mt-7 max-w-xl leading-7 text-white/70">
-                Generate a word, proverb or quotation and build a short speech around it. Focus on one message, one strong example and one memorable takeaway.
+                Choose from fundamentals, essential speeches, proverbs, hypotheticals, debate motions and one-word challenges. Build around one message, one strong example and one memorable takeaway.
               </p>
             </div>
             <DailyPromptGenerator />

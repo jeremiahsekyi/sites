@@ -7,26 +7,32 @@ import type { SpeechPrompt, SpeechPromptType } from "@/lib/speech-prompts";
 
 const filters: Array<{ label: string; value: "all" | SpeechPromptType }> = [
   { label: "All prompts", value: "all" },
-  { label: "One word", value: "word" },
-  { label: "Proverbs", value: "proverb" },
-  { label: "Quotations", value: "quotation" },
+  { label: "Fundamentals", value: "fundamentals" },
+  { label: "Essentials", value: "essentials" },
+  { label: "Proverbs", value: "proverbs" },
+  { label: "What if?", value: "hypotheticals" },
+  { label: "Debates", value: "debates" },
+  { label: "One word", value: "one-word" },
 ];
 
 const typeLabels: Record<SpeechPromptType, string> = {
-  word: "One-word prompt",
-  proverb: "Proverb prompt",
-  quotation: "Quotation prompt",
+  fundamentals: "Fundamental prompt",
+  essentials: "Essential speech",
+  proverbs: "Proverb",
+  hypotheticals: "Hypothetical",
+  debates: "Debate motion",
+  "one-word": "One-word prompt",
 };
 
 export function DailyPromptGenerator() {
   const [filter, setFilter] = useState<"all" | SpeechPromptType>("all");
   const [prompt, setPrompt] = useState<SpeechPrompt>(speechPrompts[0]);
-  const displayPrompt = prompt.text.replace(".”. ", ".” ");
 
   function generate(nextFilter = filter) {
     const pool = nextFilter === "all" ? speechPrompts : speechPrompts.filter((item) => item.type === nextFilter);
     const currentIndex = pool.findIndex((item) => item.text === prompt.text);
-    const nextIndex = currentIndex < 0 ? 0 : (currentIndex + 17) % pool.length;
+    let nextIndex = Math.floor(Math.random() * pool.length);
+    if (pool.length > 1 && nextIndex === currentIndex) nextIndex = (nextIndex + 1) % pool.length;
     setPrompt(pool[nextIndex]);
   }
 
@@ -54,8 +60,12 @@ export function DailyPromptGenerator() {
         <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-[#d94b35]">
           <Sparkles size={16} aria-hidden="true" /> {typeLabels[prompt.type]}
         </div>
-        <p key={prompt.text} className="display prompt-enter mt-8 text-4xl leading-[1.08] sm:text-5xl" aria-live="polite">
-          {displayPrompt}
+        <p
+          key={prompt.text}
+          className={`display prompt-enter mt-8 leading-[1.08] ${prompt.text.length > 82 ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl"}`}
+          aria-live="polite"
+        >
+          {prompt.text}
         </p>
       </div>
       <div className="flex flex-col gap-4 border-t border-[#e1ddd2] bg-[#f7f6f1] p-5 sm:flex-row sm:items-center sm:justify-between">
