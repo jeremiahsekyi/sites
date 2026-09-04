@@ -10,18 +10,29 @@ import { programmes, testimonials } from "@/lib/content";
 export default function Home() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-[#10233f] text-white">
-        <div className="grain absolute inset-0 opacity-40" />
-        <div className="hero-glow absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#d94b35]/20 blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
-          <div className="py-6" data-reveal="left">
+      <section className="immersive-hero relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-[#07101e] text-white">
+        <div className="immersive-photo immersive-photo-left" aria-hidden="true">
+          <Image src="/images/jeremiah-sekyi.webp" alt="" fill priority className="object-cover object-[50%_25%]" sizes="(max-width: 767px) 0px, 31vw" />
+        </div>
+        <div className="immersive-photo immersive-photo-centre" aria-hidden="true">
+          <Image src="/images/hero.webp" alt="" fill priority className="object-cover object-[52%_46%]" sizes="(max-width: 767px) 100vw, 50vw" />
+        </div>
+        <div className="immersive-photo immersive-photo-right" aria-hidden="true">
+          <Image src="/images/podcast.webp" alt="" fill priority className="object-cover object-[50%_35%]" sizes="(max-width: 767px) 0px, 29vw" />
+        </div>
+        <div className="immersive-overlay absolute inset-0 z-[1]" aria-hidden="true" />
+        <div className="grain absolute inset-0 z-[2] opacity-20" aria-hidden="true" />
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 py-12 sm:py-16 lg:px-8 lg:py-20">
+          <span className="immersive-outline" aria-hidden="true">VOICE</span>
+          <div className="my-auto max-w-5xl py-8" data-reveal="left">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#ffcf24]">
               Empowering human communicators for a tech future
             </p>
-            <h1 className="display mt-6 max-w-3xl text-6xl leading-[0.92] sm:text-7xl lg:text-[5.5rem]">
+            <h1 className="display immersive-heading mt-6 max-w-5xl text-[clamp(3.65rem,8.3vw,7.8rem)] leading-[0.87]">
               Speak with clarity. Lead with influence.
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-white/75">
+            <p className="mt-7 max-w-xl text-lg leading-8 text-white/80">
               Research-backed coaching for professionals, executives and teams who need their ideas to be understood, trusted and acted on.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -33,13 +44,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="hero-media group relative min-h-[420px] overflow-hidden lg:min-h-[590px]" data-reveal="right">
-            <div className="absolute inset-0 translate-x-4 translate-y-4 border-2 border-[#ffcf24]" />
-            <Image src="/images/hero.webp" alt="Jeremiah Sekyi coaching a live communication workshop" fill priority className="hero-image object-cover object-[52%_48%] transition duration-1000 group-hover:scale-[1.035]" sizes="(max-width: 1024px) 100vw, 50vw" />
-            <div className="proof-badge absolute bottom-0 left-0 max-w-xs bg-[#d94b35] p-5 text-white">
-              <strong className="relative z-10 block text-3xl"><AnimatedCounter /></strong>
-              <span className="relative z-10 text-sm leading-6">students and professionals trained across every continent</span>
-            </div>
+          <div className="immersive-proof proof-badge ml-auto max-w-sm bg-[#d94b35] p-5 text-white" data-reveal="right">
+            <strong className="relative z-10 block text-4xl"><AnimatedCounter /></strong>
+            <span className="relative z-10 block text-sm leading-6">students and professionals trained across every continent</span>
           </div>
         </div>
       </section>

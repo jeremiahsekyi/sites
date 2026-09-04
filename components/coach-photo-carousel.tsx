@@ -11,9 +11,9 @@ const coachPhotos = [
     position: "object-[52%_center]",
   },
   {
-    src: "/images/coach-podcast.webp",
-    alt: "Jeremiah Kobby Sekyi in a podcast conversation",
-    position: "object-[50%_38%]",
+    src: "/images/jeremiah-sekyi.webp",
+    alt: "Jeremiah Kobby Sekyi, founder and lead coach",
+    position: "object-top",
   },
   {
     src: "/images/coach-portrait.webp",
