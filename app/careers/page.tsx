@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CareersOpening, CreativeRole } from "@/components/creative-careers";
 import { ArrowRight, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers | Business Development Associate",
-  description: "Join The Speech Factory as a full-time, remote Business Development Associate. Applications close 15 October 2026, Anywhere on Earth.",
+  title: "Careers | Creative & Business Development Associates",
+  description: "Join The Speech Factory. Explore our remote Creative Associate (part-time) and Business Development Associate (full-time) openings.",
 };
 
 const responsibilities = [
@@ -51,17 +52,19 @@ const qualifications = [
 
 export default function CareersPage() {
   return <main>
-    <section className="bg-[#10233f] text-white">
+    <CareersOpening />
+    <CreativeRole />
+    <section id="business-development" className="scroll-mt-20 bg-[#10233f] text-white">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
         <div>
           <Link href="/about" className="text-sm font-bold text-white/75 underline underline-offset-4">Meet The Speech Factory</Link>
-          <p className="mt-9 text-sm font-black uppercase tracking-[0.2em] text-[#ffcf24]">Careers · We’re hiring</p>
-          <h1 className="display mt-5 text-5xl leading-[1.04] sm:text-6xl lg:text-7xl">Business Development Associate</h1>
+          <p className="mt-9 text-sm font-black uppercase tracking-[0.2em] text-[#ffcf24]">02 / BUSINESS DEVELOPMENT ASSOCIATE</p>
+          <h2 className="display mt-5 text-5xl leading-[1.04] sm:text-6xl lg:text-7xl">Business Development Associate</h2>
           <div className="mt-7 flex flex-wrap gap-3 text-sm font-bold"><span className="border border-white/30 px-4 py-2">Full-time</span><span className="border border-white/30 px-4 py-2">Remote</span><span className="border border-white/30 px-4 py-2">Early career</span></div>
           <p className="mt-7 max-w-xl text-lg leading-8 text-white/80">Help us reach more people, build lasting relationships and turn new opportunities into growth.</p>
           <a href="#apply" className="mt-8 inline-flex items-center gap-3 bg-[#ffcf24] px-6 py-4 font-black text-[#10233f] transition hover:-translate-y-1">How to apply <ArrowRight size={18} aria-hidden="true" /></a>
         </div>
-        <figure className="m-0"><div className="relative aspect-[4/5] overflow-hidden sm:aspect-[3/2] lg:aspect-[4/5]"><Image src="/images/team-culture.webp" alt="The Speech Factory team together" fill priority unoptimized className="object-cover" sizes="(max-width: 1024px) 100vw, 42vw" /></div><figcaption className="mt-4 text-sm leading-6 text-white/70">The people behind the programmes. Be part of what comes next.</figcaption></figure>
+        <figure className="m-0"><div className="relative aspect-[4/5] overflow-hidden sm:aspect-[3/2] lg:aspect-[4/5]"><Image src="/images/team-culture.webp" alt="The Speech Factory team together" fill unoptimized className="object-cover" sizes="(max-width: 1024px) 100vw, 42vw" /></div><figcaption className="mt-4 text-sm leading-6 text-white/70">The people behind the programmes. Be part of what comes next.</figcaption></figure>
       </div>
     </section>
 
