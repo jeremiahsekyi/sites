@@ -133,7 +133,7 @@ export default function Home() {
           <p className="mt-6 max-w-md text-lg leading-8 text-[#626772]">
             Our clients receive practical guidance for clearer thinking, stronger delivery and better performance in high-pressure communication.
           </p>
-          <Link href="/results" className="mt-7 inline-flex items-center gap-2 font-extrabold text-[#10233f]">
+          <Link href="/proof-of-work" className="mt-7 inline-flex items-center gap-2 font-extrabold text-[#10233f]">
             See client results <ArrowRight size={18} />
           </Link>
         </div>
@@ -166,6 +166,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </main>
+    <div className="mx-auto max-w-7xl px-5 py-10"><Link href="/proof-of-work" className="mr-8 border-b border-current pb-2 font-bold">Proof of Work →</Link><Link href="/executive-communication-coaching" className="border-b border-current pb-2 font-bold">Executive Communication Coaching →</Link></div></main>
   );
 }

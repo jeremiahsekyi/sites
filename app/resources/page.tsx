@@ -122,6 +122,6 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </section>
-    </main>
+    <div className="mx-auto max-w-7xl px-5 pb-16"><Link href="/executive-communication-coaching" className="border-b border-current pb-2 font-bold">Put your practice into action with communication coaching →</Link></div></main>
   );
 }

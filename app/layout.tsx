@@ -5,6 +5,7 @@ import { MotionObserver } from "@/components/motion-observer";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  robots: { index: true, follow: true },
   metadataBase: new URL("https://thespeechfactory.org"),
   title: {
     default: "The Speech Factory | Communication Coaching",
