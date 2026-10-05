@@ -1,3 +1,4 @@
+import { PilotRibbon, PilotAnnouncement } from "@/components/pilot-announcement";
 import { ArrowRight, Award, Brain, MessageSquareText, Mic2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,7 @@ import { programmes, testimonials } from "@/lib/content";
 export default function Home() {
   return (
     <main>
+      <PilotRibbon/>
       <section className="cinematic-hero relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-[#081323] text-white">
         <div className="cinematic-slides absolute inset-0" aria-hidden="true">
           <div className="cinematic-slide cinematic-slide-base">
@@ -61,6 +63,7 @@ export default function Home() {
         </div>
       </section>
 
+      <PilotAnnouncement/>
       <ClientBrandStrip />
 
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">

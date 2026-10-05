@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import { DatabaseSync } from 'node:sqlite';
+import { readFileSync } from 'node:fs';
+import { handlePilotRequest } from '../.sites-runtime/pilot-server-test.mjs';
+const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync('drizzle/0000_great_dorian_gray.sql','utf8'));
+function statement(sql,values=[]){return {bind:(...v)=>statement(sql,v),first:async()=>sqlite.prepare(sql).get(...values)||null,all:async()=>({results:sqlite.prepare(sql).all(...values)}),run:async()=>sqlite.prepare(sql).run(...values)};}
+const env={DB:{prepare:statement},PILOT_ORIGIN:'https://pilot.example',PILOT_ADMIN_EMAILS:'owner@example.com'};
+const sample={requestId:crypto.randomUUID(),name:'Test Applicant',email:'test@example.com',contact:'+233 200 000 000',contactMethod:'Email',nationality:'Prefer not to say',timezone:'Africa/Accra',needs:['Presentation skills'],goals:'=SUM(1,2)',january:'Yes, I can start in January',urgency:'Yes, I need support before January',immediateNeeds:['Interview preparation'],deadline:'2026-12-01',immediateDetails:'Test only',consent:true,updates:false,website:''};
+const post=(body,origin=env.PILOT_ORIGIN)=>new Request(env.PILOT_ORIGIN+'/api/pilot/register',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify(body)});
+let response=await handlePilotRequest(post(sample,'https://untrusted.example'),env);assert.equal(response.status,403);
+response=await handlePilotRequest(post({...sample,consent:false}),env);assert.equal(response.status,400);
+response=await handlePilotRequest(post({...sample,immediateNeeds:[]}),env);assert.equal(response.status,400);
+response=await handlePilotRequest(post({...sample,email:'not an email'}),env);assert.equal(response.status,400);
+response=await handlePilotRequest(post(sample),env);assert.equal(response.status,201);const result=await response.json();assert.equal(result.saved,true);assert.equal(result.bookingUrl,'https://calendar.app.google/UzbP7FBg1Awo21Pr6');
+response=await handlePilotRequest(post(sample),env);assert.equal(response.status,200);assert.equal((await response.json()).reference,result.reference);assert.equal(sqlite.prepare('SELECT count(*) AS total FROM pilot_registrations').get().total,1);
+response=await handlePilotRequest(new Request(env.PILOT_ORIGIN+'/api/pilot/registrations'),env);assert.equal(response.status,403);
+response=await handlePilotRequest(new Request(env.PILOT_ORIGIN+'/api/pilot/registrations',{headers:{'oai-authenticated-user-email':'visitor@example.com'}}),env);assert.equal(response.status,403);
+response=await handlePilotRequest(new Request(env.PILOT_ORIGIN+'/api/pilot/registrations',{headers:{'oai-authenticated-user-email':'owner@example.com'}}),env);assert.equal(response.status,200);const rows=(await response.json()).registrations;assert.equal(rows.length,1);assert.equal(rows[0].name,'Test Applicant');assert.equal(rows[0].updates,0);
+response=await handlePilotRequest(new Request(env.PILOT_ORIGIN+'/api/pilot/registrations?format=csv',{headers:{'oai-authenticated-user-email':'owner@example.com'}}),env);assert.equal(response.status,200);const csv=await response.text();assert(csv.includes("'=SUM(1,2)"));assert(csv.includes('Interview preparation'));assert.equal(response.headers.get('cache-control'),'private, no-store');
+response=await handlePilotRequest(post({...sample,requestId:crypto.randomUUID()}),{...env,DB:undefined});assert.equal(response.status,503);assert.equal((await response.json()).saved,undefined);
+console.log('PASS: server validation, consent, origin checks, durable SQL write/read, idempotency, admin protection, CSV formula escaping and storage failure.');
