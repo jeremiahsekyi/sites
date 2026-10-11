@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MotionObserver } from "@/components/motion-observer";
 import "./globals.css";
+import "./resources.css";
 
 export const metadata: Metadata = {
   robots: { index: true, follow: true },

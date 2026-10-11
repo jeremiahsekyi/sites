@@ -2,7 +2,6 @@
 
 import { RefreshCw, Sparkles } from "lucide-react";
 import { useState } from "react";
-import { speechPrompts } from "@/lib/speech-prompts";
 import type { SpeechPrompt, SpeechPromptType } from "@/lib/speech-prompts";
 
 const filters: Array<{ label: string; value: "all" | SpeechPromptType }> = [
@@ -24,7 +23,7 @@ const typeLabels: Record<SpeechPromptType, string> = {
   "one-word": "One-word prompt",
 };
 
-export function DailyPromptGenerator() {
+export function DailyPromptGenerator({ prompts: speechPrompts }: { prompts: SpeechPrompt[] }) {
   const [filter, setFilter] = useState<"all" | SpeechPromptType>("all");
   const [prompt, setPrompt] = useState<SpeechPrompt>(speechPrompts[0]);
 
@@ -42,7 +41,7 @@ export function DailyPromptGenerator() {
   }
 
   return (
-    <div className="overflow-hidden border border-white/15 bg-white text-[#131820] shadow-[0_28px_80px_rgba(0,0,0,0.18)]" data-reveal="right">
+    <div className="overflow-hidden border border-white/15 bg-white text-[#131820] shadow-[0_28px_80px_rgba(0,0,0,0.18)]">
       <div className="flex flex-wrap gap-2 border-b border-[#e1ddd2] bg-[#f7f6f1] p-4" aria-label="Prompt type">
         {filters.map((item) => (
           <button
