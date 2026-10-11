@@ -1,3 +1,4 @@
+import { HeroPhotos } from "@/components/hero-photos";
 import { PilotRibbon, PilotAnnouncement } from "@/components/pilot-announcement";
 import { ArrowRight, Award, Brain, MessageSquareText, Mic2 } from "lucide-react";
 import Image from "next/image";
@@ -13,17 +14,7 @@ export default function Home() {
     <main>
       <PilotRibbon/>
       <section className="cinematic-hero relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-[#081323] text-white">
-        <div className="cinematic-slides absolute inset-0" aria-hidden="true">
-          <div className="cinematic-slide cinematic-slide-base">
-            <Image src="/images/hero.webp" alt="" fill priority className="object-cover object-[52%_44%]" sizes="100vw" />
-          </div>
-          <div className="cinematic-slide cinematic-slide-team">
-            <Image src="/images/team-culture.webp" alt="" fill priority className="object-cover object-center" sizes="100vw" />
-          </div>
-          <div className="cinematic-slide cinematic-slide-podcast">
-            <Image src="/images/podcast.webp" alt="" fill priority className="object-cover object-[50%_36%]" sizes="100vw" />
-          </div>
-        </div>
+        <HeroPhotos />
         <div className="cinematic-shade absolute inset-0 z-[1]" aria-hidden="true" />
         <div className="grain absolute inset-0 z-[2] opacity-20" aria-hidden="true" />
 
@@ -51,7 +42,7 @@ export default function Home() {
 
           <div className="cinematic-bottom flex items-end justify-between gap-10">
             <div className="cinematic-proof proof-badge bg-[#d94b35] p-5 text-white" data-reveal="left">
-              <strong className="relative z-10 block text-4xl"><AnimatedCounter /></strong>
+              <strong className="relative z-10 block text-4xl"><AnimatedCounter target={2075} /></strong>
               <span className="relative z-10 block text-sm leading-6">students and professionals trained across every continent</span>
             </div>
             <div className="cinematic-story-strip" aria-label="Communication coaching outcomes" data-reveal="right">

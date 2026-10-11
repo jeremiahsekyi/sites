@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { MotionObserver } from "@/components/motion-observer";
 import "./globals.css";
 import "./resources.css";
+import "./hero-photos.css";
 
 export const metadata: Metadata = {
   robots: { index: true, follow: true },
