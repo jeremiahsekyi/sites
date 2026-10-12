@@ -31,7 +31,7 @@ export function CoachPhotoCarousel() {
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let timer: ReturnType<typeof window.setInterval> | undefined;
+    let timer: number | undefined;
     const updateRotation = () => {
       window.clearInterval(timer);
       if (!motion.matches) {
