@@ -1,5 +1,45 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
-const photos=[{src:"group-practice",alt:"A coach and participant practising communication at a Speech Factory workshop"},{src:"shared-moments",alt:"Participants enjoying a practical speaking session"},{src:"learn-together",alt:"A group learning together with a Speech Factory coach"}];
-export function HeroPhotos(){const [current,setCurrent]=useState(0);const [paused,setPaused]=useState(false);useEffect(()=>{if(paused||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const timer=setInterval(()=>setCurrent(n=>(n+1)%photos.length),8500);return()=>clearInterval(timer)},[paused]);return <><div className="professional-hero-photos">{photos.map((photo,i)=><div className={i===current?"professional-photo active":"professional-photo"} key={photo.src} aria-hidden={i!==current}><Image src={`/images/academy/${photo.src}.webp`} alt={photo.alt} fill priority={i===0} sizes="100vw"/></div>)}</div><div className="professional-photo-controls"><span>Our workshops</span>{photos.map((p,i)=><button key={p.src} aria-label={`Show workshop photograph ${i+1}`} aria-pressed={current===i} onClick={()=>{setCurrent(i);setPaused(true)}}>{String(i+1).padStart(2,'0')}</button>)}<button onClick={()=>setPaused(p=>!p)} aria-label={paused?'Resume photo rotation':'Pause photo rotation'}>{paused?'Play':'Pause'}</button></div></>}
+
+const photos = [
+  { src: "group-practice", alt: "A coach and participant practising communication at a Speech Factory workshop" },
+  { src: "shared-moments", alt: "Participants enjoying a practical speaking session" },
+  { src: "learn-together", alt: "A group learning together with a Speech Factory coach" },
+];
+
+export function HeroPhotos() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const updateRotation = () => {
+      clearInterval(timer);
+      if (!motion.matches) {
+        timer = setInterval(() => setCurrent((index) => (index + 1) % photos.length), 8500);
+      }
+    };
+    updateRotation();
+    motion.addEventListener("change", updateRotation);
+    return () => {
+      clearInterval(timer);
+      motion.removeEventListener("change", updateRotation);
+    };
+  }, []);
+
+  return (
+    <div className="professional-hero-photos">
+      {photos.map((photo, index) => (
+        <div
+          className={index === current ? "professional-photo active" : "professional-photo"}
+          key={photo.src}
+          aria-hidden={index !== current}
+        >
+          <Image src={`/images/academy/${photo.src}.webp`} alt={photo.alt} fill priority={index === 0} sizes="100vw" />
+        </div>
+      ))}
+    </div>
+  );
+}
