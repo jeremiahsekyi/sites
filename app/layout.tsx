@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MotionObserver } from "@/components/motion-observer";
+import { AcademyInvitation } from "@/components/academy-invitation";
 import "./globals.css";
 import "./resources.css";
 import "./hero-photos.css";
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <AcademyInvitation />
       </body>
     </html>
   );
