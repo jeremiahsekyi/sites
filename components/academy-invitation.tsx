@@ -3,29 +3,48 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import styles from "./academy-invitation.module.css";
-const SEEN_KEY = "tsf:academy-invitation:v1";
+
 export function AcademyInvitation() {
   const pathname = usePathname();
   const [visiblePath, setVisiblePath] = useState<string | null>(null);
-  const seen = useRef(false);
+  const previousPath = useRef(pathname);
+  const hasNavigated = useRef(false);
   const excluded = pathname.startsWith("/group-coaching-2027") || pathname.startsWith("/admin") || pathname.startsWith("/internal");
+
   useEffect(() => {
-    if (excluded || seen.current) return;
-    try { if (sessionStorage.getItem(SEEN_KEY)) return; } catch { /* Storage is optional. */ }
-    let timer: number;
-    const show = () => {
-      const focused = document.activeElement;
-      if (document.hidden || focused?.matches("input, textarea, select, [contenteditable='true']") || document.querySelector("dialog[open], [role='dialog'][aria-modal='true']")) {
-        timer = window.setTimeout(show, 3000);
-        return;
-      }
-      seen.current = true;
-      try { sessionStorage.setItem(SEEN_KEY, "shown"); } catch { /* In-memory fallback. */ }
+    if (previousPath.current !== pathname) {
+      hasNavigated.current = true;
+      previousPath.current = pathname;
+    }
+    if (excluded) return;
+    // New pages open the invitation immediately; the initial homepage uses idle time.
+    if (pathname !== "/" || hasNavigated.current) {
       setVisiblePath(pathname);
+      return;
+    }
+    let timer: number | undefined;
+    const activityEvents = ["pointermove", "pointerdown", "keydown", "wheel", "scroll", "touchstart"] as const;
+    const clearTimer = () => { if (timer !== undefined) window.clearTimeout(timer); };
+    const stopListening = () => {
+      clearTimer();
+      activityEvents.forEach(event => window.removeEventListener(event, resetIdle));
+      document.removeEventListener("visibilitychange", resetIdle);
     };
-    timer = window.setTimeout(show, 18000);
-    return () => window.clearTimeout(timer);
+    function resetIdle() {
+      clearTimer();
+      if (document.hidden) return;
+      timer = window.setTimeout(() => {
+        if (document.hidden) return;
+        setVisiblePath(pathname);
+        stopListening();
+      }, 5000);
+    }
+    activityEvents.forEach(event => window.addEventListener(event, resetIdle, { passive: true }));
+    document.addEventListener("visibilitychange", resetIdle);
+    resetIdle();
+    return stopListening;
   }, [pathname, excluded]);
+
   const visible = !excluded && visiblePath === pathname;
   useEffect(() => {
     if (!visible) return;
