@@ -149,7 +149,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#10233f] text-white">
+      <section className="support-ui"><div className="home-teaser"><span className="eyebrow">FOCUSED COMMUNICATION SUPPORT</span><h2>A big moment coming up?</h2><p>An interview, presentation, keynote or important conversation. Get targeted preparation built around what you need, when you need it.</p><Link className="button" href="/programmes#focused-support">Explore our focused services ↗</Link></div></section>
+<section className="bg-[#10233f] text-white">
         <div className="grain mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 py-20 md:flex-row md:items-end md:justify-between lg:px-8">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffcf24]">Your next speech could be spectacular.</p>
