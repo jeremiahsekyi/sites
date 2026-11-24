@@ -26,6 +26,15 @@ export default function EventsPage() {
         title="Where human talent is celebrated, voices are given room, and ideas are allowed to truly shine."
         text="Live experiences for people who want to learn, practise and connect through powerful communication."
       />
+      <section id="upcoming-workshops" className="mx-auto max-w-7xl px-5 pt-16 lg:px-8">
+        <h2 className="display text-4xl">Upcoming workshops</h2>
+        <article className="mt-6 border-l-4 border-[#ffcf24] bg-[#10233f] p-7 text-white sm:p-10">
+          <p className="font-bold text-[#ffcf24]">29 November 2026 · 3–5 PM GMT · $25</p>
+          <h3 className="display mt-4 text-4xl">How to Ace Your Next Interview</h3>
+          <p className="mt-3 max-w-2xl leading-7">Practise explaining what you bring to a role, whether you’re interviewing in Ghana or with an international team.</p>
+          <Link className="mt-5 inline-flex items-center gap-2 font-bold underline underline-offset-4" href="/events/upcoming-workshops/how-to-ace-your-next-interview">Workshop details and registration <ArrowRight size={18} /></Link>
+        </article>
+      </section>
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
         <div className="group relative aspect-[3/2] overflow-hidden">
           <Image
