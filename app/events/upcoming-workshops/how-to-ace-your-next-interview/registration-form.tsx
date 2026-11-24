@@ -29,13 +29,13 @@ export default function RegistrationForm() {
   return (
     <form onSubmit={submit} method="post" className="space-y-5 border-t-4 border-[#ffcf24] bg-slate-50 p-6 sm:p-9">
       <h2 className="display text-4xl">Register for the workshop</h2>
-      <p>Limited slots available. We’ll save your details, then take you to Paystack to pay the $25 fee.</p>
+      <p>Limited slots available. We’ll save your details, then take you to Paystack. The $25 workshop fee is collected as one payment of GHS 290.</p>
       <label className="block font-bold">Full name<input required autoComplete="name" name="name" maxLength={120} className={field} /></label>
       <label className="block font-bold">Email address<input required type="email" autoComplete="email" name="email" maxLength={254} className={field} /></label>
       <label className="block font-bold">Phone (optional)<input type="tel" autoComplete="tel" name="phone" maxLength={40} className={field} /></label>
       <label className="block font-bold">What role are you preparing for? (optional)<textarea name="context" maxLength={500} rows={2} className={field} /></label>
       {error && <p role="alert" className="text-red-800">{error}</p>}
-      <button disabled={busy} className="w-full bg-[#10233f] px-5 py-4 font-bold text-white disabled:opacity-70">{busy ? "Saving registration…" : "Continue to Paystack · $25"}</button>
+      <button disabled={busy} className="w-full bg-[#10233f] px-5 py-4 font-bold text-white disabled:opacity-70">{busy ? "Saving registration…" : "Continue to Paystack · GHS 290"}</button>
     </form>
   );
 }
